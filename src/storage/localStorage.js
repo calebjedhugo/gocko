@@ -15,7 +15,7 @@ class Storage {
         localStorage.setItem(this.key, JSON.stringify(newArray));
     };
     reset = () => {
-        localStorage.setItem(this.key, JSON.stringify({}));
+        localStorage.setItem(this.key, JSON.stringify([]));
     };
     get data() {
         return JSON.parse(localStorage.getItem(this.key) || "[]");
@@ -24,7 +24,7 @@ class Storage {
 
 const mathHistory = new Storage({
     key: "mathHistory",
-    schema: ["question", "answer", "correct"],
+    schema: ["question", "answer", "correct", "time"],
 });
 
 export { mathHistory };
