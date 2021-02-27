@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -20,9 +20,12 @@ const Question = ({ data, push, reset }) => {
     const [attempted, setAttempted] = useState(false);
     const [answerFeedback, setAnswerFeedback] = useState("Correct!");
     const [userAnswer, setUserAnswer] = useState("");
+    const [answerChanged, setAnswerChanged] = useState(false);
+    useEffect(() => setAnswerChanged(true), [userAnswer]);
     const answer = numbers[0] + numbers[1];
     const newQuestion = () => {
         setAttempted(false);
+        setAnswerChanged(false);
         setNumbers(newNumbers());
         setUserAnswer("");
         questionInput.current.focus();
@@ -80,7 +83,7 @@ const Question = ({ data, push, reset }) => {
                                     answer: value,
                                     correct: true,
                                 };
-                                setAttempted(true);
+                                if (value) setAttempted(true);
                                 if (Number(value) === Number(answer)) {
                                     push({
                                         ...historyObj,
@@ -88,7 +91,8 @@ const Question = ({ data, push, reset }) => {
                                     });
                                     setAnswerFeedback("Correct!");
                                     newQuestionButton.current.focus();
-                                } else if (!!value) {
+                                } else if (!!value && answerChanged) {
+                                    setAnswerChanged(false);
                                     push({
                                         ...historyObj,
                                         correct: false,
