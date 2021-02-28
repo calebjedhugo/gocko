@@ -7,7 +7,7 @@ class QuestionMaker {
     }
 
     newQuestion = () => {
-        this.numbers = [randomNumberBetween(0, 5), randomNumberBetween(0, 5)];
+        this.numbers = [randomNumberBetween(0, 10), randomNumberBetween(0, 10)];
         this.question = `${this.numbers[0]} + ${this.numbers[1]}`;
         this.answer = this.numbers[0] + this.numbers[1];
     };

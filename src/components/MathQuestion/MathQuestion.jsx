@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import LargeInput from "components/common/LargeInput";
 
 const Question = ({ data, push, question, answer, newQuestion }) => {
     const [attempted, setAttempted] = useState(false);
@@ -90,22 +90,14 @@ const Question = ({ data, push, question, answer, newQuestion }) => {
                                 }
                             }}
                         >
-                            <TextField
-                                type="number"
+                            <LargeInput
                                 autoFocus={true}
-                                inputRef={questionInput}
-                                InputProps={{
-                                    style: {
-                                        fontSize: "100px",
-                                        maxWidth: "200px",
-                                    },
-                                }}
+                                ref={questionInput}
                                 name="answer"
-                                autoComplete="off"
-                                variant="outlined"
                                 value={userAnswer}
+                                type="number"
                                 onChange={(e) => setUserAnswer(e.target.value)}
-                            ></TextField>
+                            />
                         </form>
                         <Button
                             ref={newQuestionButton}
