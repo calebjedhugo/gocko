@@ -7,27 +7,17 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
-const randomNumberBetween = (num1, num2) => {
-    return (
-        Math.floor(Math.random() * Math.max(num1, num2)) + Math.min(num1, num2)
-    );
-};
-
-const newNumbers = () => [randomNumberBetween(0, 5), randomNumberBetween(0, 5)];
-
-const Question = ({ data, push, reset }) => {
-    const [numbers, setNumbers] = useState(newNumbers());
+const Question = ({ data, push, question, answer, newQuestion }) => {
     const [attempted, setAttempted] = useState(false);
     const [answerFeedback, setAnswerFeedback] = useState("Correct!");
     const [userAnswer, setUserAnswer] = useState("");
     const [answerChanged, setAnswerChanged] = useState(false);
     useEffect(() => setAnswerChanged(true), [userAnswer]);
-    const answer = numbers[0] + numbers[1];
-    const newQuestion = () => {
+    const handleNewQuestion = () => {
         setAttempted(false);
         setAnswerChanged(false);
-        setNumbers(newNumbers());
         setUserAnswer("");
+        newQuestion();
         questionInput.current.focus();
     };
     const newQuestionButton = useRef();
@@ -48,9 +38,7 @@ const Question = ({ data, push, reset }) => {
                         flexDirection="column"
                         textAlign="center"
                     >
-                        <Typography variant="h1">
-                            {numbers[0]} + {numbers[1]}
-                        </Typography>
+                        <Typography variant="h1">{question}</Typography>
                     </Box>
                 </Grid>
                 <Grid item>
@@ -79,7 +67,7 @@ const Question = ({ data, push, reset }) => {
                                 e.preventDefault();
                                 const { value } = e.target.answer;
                                 const historyObj = {
-                                    question: `${numbers[0]} + ${numbers[1]}`,
+                                    question,
                                     answer: value,
                                     correct: true,
                                 };
@@ -119,7 +107,10 @@ const Question = ({ data, push, reset }) => {
                                 onChange={(e) => setUserAnswer(e.target.value)}
                             ></TextField>
                         </form>
-                        <Button ref={newQuestionButton} onClick={newQuestion}>
+                        <Button
+                            ref={newQuestionButton}
+                            onClick={handleNewQuestion}
+                        >
                             New Question
                         </Button>
                     </Box>
@@ -136,11 +127,11 @@ const Question = ({ data, push, reset }) => {
     );
 };
 
-const MathQuestion = ({ data, push, reset }) => {
+const MathQuestion = ({ data, push, question, answer, newQuestion }) => {
     return (
         <>
             <h2>Math Questions</h2>
-            <Question {...{ data, push, reset }} />
+            <Question {...{ data, push, question, answer, newQuestion }} />
         </>
     );
 };
