@@ -1,9 +1,10 @@
 import Button from "@material-ui/core/Button";
+import Header from "components/common/Header";
 
 const Stats = ({ storage, reset }) => {
     return (
         <div>
-            <h2>Answer History</h2>
+            <Header>Answer History</Header>
             <table>
                 <tbody>
                     <tr>

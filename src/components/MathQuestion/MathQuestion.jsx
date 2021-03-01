@@ -6,6 +6,7 @@ import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import LargeInput from "components/common/LargeInput";
+import Header from "components/common/Header";
 
 const Question = ({ data, push, question, answer, newQuestion }) => {
     const [attempted, setAttempted] = useState(false);
@@ -122,7 +123,7 @@ const Question = ({ data, push, question, answer, newQuestion }) => {
 const MathQuestion = ({ data, push, question, answer, newQuestion }) => {
     return (
         <>
-            <h2>Math Questions</h2>
+            <Header>Math Questions</Header>
             <Question {...{ data, push, question, answer, newQuestion }} />
         </>
     );
