@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MathQuestion from "components/MathQuestion";
 import Stats from "components/Stats";
+import Reading from "components/Reading";
 
 import { Provider } from "react-redux";
 import store from "redux/store";
@@ -17,6 +18,9 @@ function App() {
                                 <Link to="/">Quinged (Home)</Link>
                             </li>
                             <li>
+                                <Link to="/Binjundan">Binjundan (Reading)</Link>
+                            </li>
+                            <li>
                                 <Link to="/Quin">Quin (Math questions)</Link>
                             </li>
                         </ul>
@@ -27,6 +31,9 @@ function App() {
                     <Switch>
                         <Route path="/Quin">
                             <MathQuestion />
+                        </Route>
+                        <Route path="/Binjundan">
+                            <Reading />
                         </Route>
                         <Route path="/">
                             <Stats />
