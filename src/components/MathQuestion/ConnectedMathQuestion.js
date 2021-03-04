@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
         data: state.storage.math,
         question: state.questions.math.question,
         answer: state.questions.math.answer,
+        maxAnswer: state.questions.math.maxAnswer,
     };
 };
 

@@ -16,6 +16,10 @@ class QuestionMaker {
         this.question = `${this.numbers[0]} + ${this.numbers[1]}`;
         this.answer = this.numbers[0] + this.numbers[1];
     };
+
+    setMaxAnswer = (value) => {
+        this.maxAnswer = value;
+    };
 }
 
 export default QuestionMaker;

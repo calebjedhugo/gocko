@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header> Matches previous snapshot when not visible 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      style="opacity: 0; transform: scale(0.75, 0.5625); visibility: hidden;"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-3"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2"
+        >
+          Correct!
+        </h2>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<Header> Matches previous snapshot when visible and answer is correct 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      style="opacity: 1; transform: scale(1, 1); transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-1"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2"
+        >
+          Correct!
+        </h2>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<Header> Matches previous snapshot when visible and answer is wrong 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      style="opacity: 1; transform: scale(1, 1); transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-2"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2"
+        >
+          Wrong Answer. :(
+        </h2>
+      </div>
+    </div>
+  </div>
+</body>
+`;

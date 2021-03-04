@@ -2,15 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Grow from "@material-ui/core/Grow";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import LargeInput from "components/common/LargeInput";
 import Header from "components/common/Header";
+import BoolFeedback from "components/common/BoolFeedback";
 
-const Question = ({ data, push, question, answer, newQuestion }) => {
+const Question = ({ data, push, question, answer, maxAnswer, newQuestion }) => {
     const [attempted, setAttempted] = useState(false);
-    const [answerFeedback, setAnswerFeedback] = useState("Correct!");
+    const [correct, setCorrect] = useState(true);
     const [userAnswer, setUserAnswer] = useState("");
     const [answerChanged, setAnswerChanged] = useState(false);
     useEffect(() => setAnswerChanged(true), [userAnswer]);
@@ -23,6 +22,11 @@ const Question = ({ data, push, question, answer, newQuestion }) => {
     };
     const newQuestionButton = useRef();
     const questionInput = useRef();
+
+    const handleChange = ({ target: { value } }) => {
+        if (Math.abs(Number(value)) <= maxAnswer) setUserAnswer(value);
+    };
+
     return (
         <Box
             px={4}
@@ -43,23 +47,7 @@ const Question = ({ data, push, question, answer, newQuestion }) => {
                     </Box>
                 </Grid>
                 <Grid item>
-                    <Grow in={attempted}>
-                        <Paper>
-                            <Box
-                                color={
-                                    answerFeedback === "Correct!"
-                                        ? "green"
-                                        : "red"
-                                }
-                                textAlign="center"
-                                padding={1}
-                            >
-                                <Typography variant="h2">
-                                    {answerFeedback}
-                                </Typography>
-                            </Box>
-                        </Paper>
-                    </Grow>
+                    <BoolFeedback visible={attempted} value={correct} />
                 </Grid>
                 <Grid item>
                     <Box style={{ textAlign: "center" }}>
@@ -78,7 +66,7 @@ const Question = ({ data, push, question, answer, newQuestion }) => {
                                         ...historyObj,
                                         correct: true,
                                     });
-                                    setAnswerFeedback("Correct!");
+                                    setCorrect(true);
                                     newQuestionButton.current.focus();
                                 } else if (!!value && answerChanged) {
                                     setAnswerChanged(false);
@@ -86,7 +74,7 @@ const Question = ({ data, push, question, answer, newQuestion }) => {
                                         ...historyObj,
                                         correct: false,
                                     });
-                                    setAnswerFeedback("Wrong answer. :(");
+                                    setCorrect(false);
                                     questionInput.current.select();
                                 }
                             }}
@@ -97,7 +85,7 @@ const Question = ({ data, push, question, answer, newQuestion }) => {
                                 name="answer"
                                 value={userAnswer}
                                 type="number"
-                                onChange={(e) => setUserAnswer(e.target.value)}
+                                onChange={handleChange}
                             />
                         </form>
                         <Button
@@ -120,11 +108,20 @@ const Question = ({ data, push, question, answer, newQuestion }) => {
     );
 };
 
-const MathQuestion = ({ data, push, question, answer, newQuestion }) => {
+const MathQuestion = ({
+    data,
+    push,
+    question,
+    answer,
+    maxAnswer,
+    newQuestion,
+}) => {
     return (
         <>
             <Header>Math Questions</Header>
-            <Question {...{ data, push, question, answer, newQuestion }} />
+            <Question
+                {...{ data, push, question, answer, maxAnswer, newQuestion }}
+            />
         </>
     );
 };

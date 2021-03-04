@@ -1,10 +1,15 @@
-import { NEW_MATH_QUESTION } from "./actions";
+import { NEW_MATH_QUESTION, SET_MAX_ANSWER } from "./actions";
 import QuestionMaker from "logic/math/simple";
 
-const questionMaker = new QuestionMaker({ maxAnswer: 15 });
+const maxAnswer = 10;
+const questionMaker = new QuestionMaker({ maxAnswer });
 
 const reducer = (
-    state = { question: questionMaker.question, answer: questionMaker.answer },
+    state = {
+        question: questionMaker.question,
+        answer: questionMaker.answer,
+        maxAnswer,
+    },
     { type, payload }
 ) => {
     switch (type) {
@@ -12,6 +17,10 @@ const reducer = (
             questionMaker.newQuestion();
             let { question, answer } = questionMaker;
             return { ...state, question, answer };
+        case SET_MAX_ANSWER:
+            const { value } = payload || {};
+            questionMaker.setMaxAnswer(value);
+            return { ...state, maxAnswer: value };
         default:
             return state;
     }

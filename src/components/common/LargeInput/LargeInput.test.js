@@ -3,5 +3,5 @@ import LargeInput from "./LargeInput";
 
 describe("<LargeInput>", () => {
     it("Matches previous snapshot", () =>
-        expect(render(<LargeInput />)).toMatchSnapshot());
+        expect(render(<LargeInput />).baseElement).toMatchSnapshot());
 });

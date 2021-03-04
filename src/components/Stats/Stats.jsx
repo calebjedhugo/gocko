@@ -1,7 +1,8 @@
 import Button from "@material-ui/core/Button";
 import Header from "components/common/Header";
+import Input from "@material-ui/core/Input";
 
-const Stats = ({ storage, reset }) => {
+const Stats = ({ storage, reset, setMathMaxAnswer, mathMaxAnswer }) => {
     return (
         <div>
             <Header>Answer History</Header>
@@ -29,6 +30,10 @@ const Stats = ({ storage, reset }) => {
                             >
                                 Reset
                             </Button>
+                            <Input
+                                value={mathMaxAnswer}
+                                onChange={setMathMaxAnswer}
+                            />
                         </td>
                     </tr>
                 </tbody>
