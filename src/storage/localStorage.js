@@ -1,3 +1,5 @@
+const defaultSchema = ["question", "answer", "correct", "time"];
+
 class Storage {
     constructor({ key, schema }) {
         this.key = key;
@@ -12,6 +14,7 @@ class Storage {
                 );
         });
         newArray.push(obj);
+        console.log(this.key);
         localStorage.setItem(this.key, JSON.stringify(newArray));
     };
     reset = () => {
@@ -24,7 +27,12 @@ class Storage {
 
 const mathHistory = new Storage({
     key: "mathHistory",
-    schema: ["question", "answer", "correct", "time"],
+    schema: defaultSchema,
 });
 
-export { mathHistory };
+const readingHistory = new Storage({
+    key: "readingHistory",
+    schema: defaultSchema,
+});
+
+export { mathHistory, readingHistory };

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MathQuestion from "components/MathQuestion";
 import Stats from "components/Stats";
-import Reading from "components/Reading";
+import ReadingQuestion from "components/ReadingQuestion";
 
 import { Provider } from "react-redux";
 import store from "redux/store";
@@ -33,7 +33,7 @@ function App() {
                             <MathQuestion />
                         </Route>
                         <Route path="/Binjundan">
-                            <Reading />
+                            <ReadingQuestion />
                         </Route>
                         <Route path="/">
                             <Stats />

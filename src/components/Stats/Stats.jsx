@@ -3,6 +3,7 @@ import Header from "components/common/Header";
 import Input from "@material-ui/core/Input";
 
 const Stats = ({ storage, reset, setMathMaxAnswer, mathMaxAnswer }) => {
+    console.log(storage.math);
     return (
         <div>
             <Header>Answer History</Header>

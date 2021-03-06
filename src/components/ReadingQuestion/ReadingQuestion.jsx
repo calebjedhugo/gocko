@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import QuestionForm from "components/organisms/QuestionForm";
 
-const MathQuestion = ({
+const ReadingQuestion = ({
     data, // from connected
     question, // from connected
     answer, // from connected
@@ -12,13 +12,12 @@ const MathQuestion = ({
     const [userAnswer, setUserAnswer] = useState("");
 
     const handleChange = ({ target: { value } }) => {
-        if (Math.abs(Number(value)) <= maxAnswer) setUserAnswer(value);
+        if (value.length <= answer.length) setUserAnswer(value);
     };
-
     return (
         <QuestionForm
-            headerText="Math Questions"
-            inputType="number"
+            headerText="Reading Questions"
+            inputType="text"
             {...{
                 data,
                 push,
@@ -34,4 +33,4 @@ const MathQuestion = ({
     );
 };
 
-export default MathQuestion;
+export default ReadingQuestion;
