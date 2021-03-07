@@ -11,6 +11,7 @@ const QuestionForm = ({
     data,
     push,
     question,
+    displayQuestion,
     answer,
     userAnswer,
     setUserAnswer,
@@ -18,6 +19,7 @@ const QuestionForm = ({
     headerText,
     handleChange,
     inputType,
+    metaData,
 }) => {
     const [attempted, setAttempted] = useState(false);
     const [correct, setCorrect] = useState(true);
@@ -45,7 +47,7 @@ const QuestionForm = ({
             >
                 <Grid container direction="column" spacing={2}>
                     <Grid item>
-                        <QuestionBox>{question}</QuestionBox>
+                        <QuestionBox>{displayQuestion || question}</QuestionBox>
                     </Grid>
                     <Grid item>
                         <BoolFeedback visible={attempted} value={correct} />
@@ -60,6 +62,7 @@ const QuestionForm = ({
                                         question,
                                         answer: value,
                                         correct: true,
+                                        ...metaData,
                                     };
                                     if (value) setAttempted(true);
                                     if (value === answer.toString()) {

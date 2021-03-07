@@ -26,7 +26,6 @@ const MathQuestion = ({
                 answer,
                 userAnswer,
                 setUserAnswer,
-                maxAnswer,
                 newQuestion,
                 handleChange,
             }}

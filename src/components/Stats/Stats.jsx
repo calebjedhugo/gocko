@@ -1,46 +1,58 @@
-import Button from "@material-ui/core/Button";
+import React from "react";
+import StatsTable from "./StatsTable";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import Header from "components/common/Header";
-import Input from "@material-ui/core/Input";
+import TextField from "@material-ui/core/TextField";
+import Switch from "@material-ui/core/Switch";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-const Stats = ({ storage, reset, setMathMaxAnswer, mathMaxAnswer }) => {
-    console.log(storage.math);
-    return (
-        <div>
-            <Header>Answer History</Header>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Question</th>
-                        <th>Answer</th>
-                    </tr>
-                    {storage.math.map((elem) => (
-                        <tr
-                            key={elem.time}
-                            style={{ color: elem.correct ? "" : "red" }}
-                        >
-                            <td>{elem.question}</td>
-                            <td>{elem.answer}</td>
-                        </tr>
-                    ))}
-                    <tr>
-                        <td colSpan={3}>
-                            <Button
-                                onClick={() => {
-                                    reset.math();
-                                }}
-                            >
-                                Reset
-                            </Button>
-                            <Input
-                                value={mathMaxAnswer}
-                                onChange={setMathMaxAnswer}
+const Stats = ({
+    storage,
+    reset,
+    setMathMaxAnswer,
+    mathMaxAnswer,
+    readingIconOnly,
+    setReadingIconOnly,
+}) => (
+    <Box display="flex" flexDirection="column" justifyContent="center">
+        <Header>Results</Header>
+        <Grid container spacing={2} justify="space-around">
+            <Grid item>
+                <StatsTable
+                    displayName={"Math"}
+                    storage={storage.math}
+                    reset={reset.math}
+                    {...{ setMathMaxAnswer, mathMaxAnswer }}
+                >
+                    <TextField
+                        value={mathMaxAnswer}
+                        onChange={setMathMaxAnswer}
+                        variant="outlined"
+                        label="Max Answer"
+                    />
+                </StatsTable>
+            </Grid>
+            <Grid item>
+                <StatsTable
+                    displayName={"Reading"}
+                    storage={storage.reading}
+                    reset={reset.reading}
+                    {...{ setMathMaxAnswer, mathMaxAnswer }}
+                >
+                    <FormControlLabel
+                        control={
+                            <Switch
+                                checked={readingIconOnly}
+                                label="iconOnly"
+                                onChange={setReadingIconOnly}
                             />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    );
-};
-
+                        }
+                        label="Icon Only"
+                    ></FormControlLabel>
+                </StatsTable>
+            </Grid>
+        </Grid>
+    </Box>
+);
 export default Stats;

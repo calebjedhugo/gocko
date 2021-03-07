@@ -1,26 +1,27 @@
 import { NEW_READING_QUESTION, SET_SYMBOL_ONLY } from "./actions";
 import QuestionMaker from "logic/reading/QuestionMaker";
 
-const symbolOnly = false;
-const questionMaker = new QuestionMaker({ symbolOnly });
+const questionMaker = new QuestionMaker();
 
 const reducer = (
     state = {
         question: questionMaker.question,
         answer: questionMaker.answer,
-        symbolOnly,
+        iconOnly: true,
     },
     { type, payload }
 ) => {
     switch (type) {
         case NEW_READING_QUESTION:
+            // With these symbol questions, the question is the answer.
+            // The word is used to retrieve the symbol, and that is displayed instead.
             questionMaker.newQuestion();
-            let { question, answer } = questionMaker;
-            return { ...state, question, answer };
+            let { question } = questionMaker;
+            return { ...state, question };
         case SET_SYMBOL_ONLY:
             const { value } = payload || {};
-            questionMaker.setSymbolOnly(value);
-            return { ...state, symbolOnly: value };
+            console.log(value);
+            return { ...state, iconOnly: value };
         default:
             return state;
     }

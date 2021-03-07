@@ -32,7 +32,7 @@ const mathHistory = new Storage({
 
 const readingHistory = new Storage({
     key: "readingHistory",
-    schema: defaultSchema,
+    schema: [...defaultSchema, "iconOnly"],
 });
 
 export { mathHistory, readingHistory };

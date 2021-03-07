@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
         data: state.storage.reading,
         question: state.questions.reading.question,
         answer: state.questions.reading.answer,
+        iconOnly: state.questions.reading.iconOnly,
     };
 };
 
