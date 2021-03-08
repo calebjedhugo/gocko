@@ -14,7 +14,6 @@ class Storage {
                 );
         });
         newArray.push(obj);
-        console.log(this.key);
         localStorage.setItem(this.key, JSON.stringify(newArray));
     };
     reset = () => {

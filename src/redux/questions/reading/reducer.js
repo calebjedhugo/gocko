@@ -20,7 +20,6 @@ const reducer = (
             return { ...state, question };
         case SET_SYMBOL_ONLY:
             const { value } = payload || {};
-            console.log(value);
             return { ...state, iconOnly: value };
         default:
             return state;
