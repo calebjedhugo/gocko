@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MathQuestion from "components/MathQuestion";
 import Stats from "components/Stats";
 import ReadingQuestion from "components/ReadingQuestion";
+import Typing from "components/Typing";
 
 import { Provider } from "react-redux";
 import store from "redux/store";
@@ -16,14 +17,17 @@ function App() {
         <Provider store={store}>
             <ThemeProvider theme={theme}>
                 <Router>
-                    <Box>
-                        <Navbar />
+                    <Navbar />
+                    <Box px={2}>
                         <Switch>
                             <Route path="/Quin">
                                 <MathQuestion />
                             </Route>
                             <Route path="/Binjundan">
                                 <ReadingQuestion />
+                            </Route>
+                            <Route path="/typing">
+                                <Typing />
                             </Route>
                             <Route path="/">
                                 <Stats />

@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Home from "@material-ui/icons/Home";
 import Math from "@material-ui/icons/PlusOne";
 import Reading from "@material-ui/icons/MenuBook";
+import Typing from "@material-ui/icons/Keyboard";
 import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
@@ -32,6 +33,13 @@ const Navbar = () => {
                     }}
                 >
                     <Math />
+                </IconButton>
+                <IconButton
+                    onClick={() => {
+                        history.push("/Typing");
+                    }}
+                >
+                    <Typing />
                 </IconButton>
             </Toolbar>
         </AppBar>

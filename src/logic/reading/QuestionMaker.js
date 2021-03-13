@@ -1,5 +1,7 @@
-import { words } from "./questions";
+import { icons } from "./questions";
 import { randomNumberBetween } from "util/math";
+
+const words = Object.keys(icons);
 
 class QuestionMaker {
     constructor() {
@@ -7,7 +9,7 @@ class QuestionMaker {
     }
 
     newQuestion = () => {
-        const idx = randomNumberBetween(0, words.length);
+        const idx = randomNumberBetween(0, words.length - 1);
         this.answer = words[idx];
         this.question = words[idx];
     };

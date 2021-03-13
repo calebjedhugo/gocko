@@ -5,8 +5,7 @@ import Down from "@material-ui/icons/ArrowDownward";
 import Up from "@material-ui/icons/ArrowUpward";
 import Boat from "@material-ui/icons/DirectionsBoat";
 import Door from "@material-ui/icons/MeetingRoom";
-
-const words = ["left", "right", "down", "up", "boat", "door"];
+import Bed from "@material-ui/icons/LocalHotel";
 
 const icons = {
     left: <Left fontSize="inherit" />,
@@ -15,6 +14,7 @@ const icons = {
     up: <Up fontSize="inherit" />,
     boat: <Boat fontSize="inherit" />,
     door: <Door fontSize="inherit" />,
+    bed: <Bed fontSize="inherit" />,
 };
 
-export { words, icons };
+export { icons };
