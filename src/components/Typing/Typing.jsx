@@ -14,18 +14,17 @@ const Typing = ({ pastChars, currentChar, futureChars, push, advance }) => {
         if (e.target.value === currentChar) {
             advance();
         }
-        console.log(e.target.value);
     };
     const inputRef = useRef();
     useEffect(() => {
         window.addEventListener("click", () => {
             inputRef.current?.click();
         });
-
+        const localRef = inputRef;
         // returned function will be called on component unmount
         return () => {
             window.removeEventListener("click", () => {
-                inputRef.current?.click();
+                localRef.current?.click();
             });
         };
     }, []);
