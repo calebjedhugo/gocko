@@ -5,6 +5,7 @@ import questionActions from "redux/questions/typing/actions";
 import Typing from "./Typing";
 
 const mapStateToProps = (state) => ({
+    data: state.storage.typing,
     pastChars: state.questions.typing.pastChars,
     currentChar: state.questions.typing.currentChar,
     futureChars: state.questions.typing.futureChars,
