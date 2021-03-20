@@ -21,7 +21,7 @@ const StatsCell = ({ error, children }) => {
     );
 };
 
-const Stats = ({ displayName, storage, reset, children }) => {
+const StatsTable = ({ displayName, storage, reset, children }) => {
     const dataAvailable = Boolean(storage.length);
     return (
         <Grid container direction="column" spacing={2}>
@@ -71,4 +71,4 @@ const Stats = ({ displayName, storage, reset, children }) => {
     );
 };
 
-export default Stats;
+export default StatsTable;

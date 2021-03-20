@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Input from "@material-ui/core/Input";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import styled from "styled-components";
+import Motivator from "components/common/Motivator";
 
 const InvisbileBox = styled(Box)`
     opacity: 0;
@@ -10,9 +11,14 @@ const InvisbileBox = styled(Box)`
 `;
 
 const Typing = ({ pastChars, currentChar, futureChars, push, advance }) => {
+    const [addPoint, setAddPoint] = useState(false);
+    const [clearScore, setClearScore] = useState(false);
     const handleStroke = (e) => {
         if (e.target.value === currentChar) {
+            setAddPoint(true);
             advance();
+        } else {
+            setClearScore(true);
         }
     };
     const inputRef = useRef();
@@ -28,6 +34,7 @@ const Typing = ({ pastChars, currentChar, futureChars, push, advance }) => {
             });
         };
     }, []);
+    const commonProps = { variant: "body2", display: "inline" };
     return (
         <>
             <InvisbileBox>
@@ -39,16 +46,20 @@ const Typing = ({ pastChars, currentChar, futureChars, push, advance }) => {
                 />
             </InvisbileBox>
             <Box display="inline">
-                <Typography variant="h1" display="inline">
+                <Typography {...commonProps} color="textSecondary">
                     {pastChars}
                 </Typography>
-                <Typography variant="h1" display="inline" color="error">
+                <Typography {...commonProps} color="primary">
                     {currentChar}
                 </Typography>
-                <Typography variant="h1" display="inline">
-                    {futureChars}
-                </Typography>
+                <Typography {...commonProps}>{futureChars}</Typography>
             </Box>
+            <Motivator
+                addPoint={addPoint}
+                setAddPoint={setAddPoint}
+                clearScore={clearScore}
+                setClearScore={setClearScore}
+            />
         </>
     );
 };
