@@ -2,7 +2,7 @@ import { ADVANCE_TYPING_STRING, SET_TYPING_CHARS } from "./actions";
 import StringMaker from "logic/typing/StringMaker";
 
 // TODO: initialize from local storage.
-const stringMaker = new StringMaker({ typingChars: "fj" });
+const stringMaker = new StringMaker({ typingChars: "fjdk" });
 
 const reducer = (state = stringMaker.state, { type, payload }) => {
     switch (type) {
