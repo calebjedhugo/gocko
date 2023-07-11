@@ -16,11 +16,29 @@ class QuestionMaker {
     this.newCount();
   }
 
-  newQuestion = () => {
+  newAddition = () => {
     this.numbers[0] = random(0, this.maxAnswer);
     this.numbers[1] = random(0, this.maxAnswer - this.numbers[0]);
     this.question = `${this.numbers[0]} + ${this.numbers[1]}`;
     this.answer = this.numbers[0] + this.numbers[1];
+  };
+
+  newSubtraction = () => {
+    this.numbers[0] = random(0, this.maxAnswer);
+    this.numbers[1] = random(0, this.maxAnswer - this.numbers[0]);
+    const big = Math.max(...this.numbers);
+    const lil = Math.min(...this.numbers);
+    this.question = `${big} - ${lil}`;
+    this.answer = big - lil;
+  };
+
+  newQuestion = () => {
+    console.log(Boolean(random(0, 1)));
+    if (Boolean(random(0, 1))) {
+      this.newAddition();
+    } else {
+      this.newSubtraction();
+    }
   };
 
   newCount = () => {
