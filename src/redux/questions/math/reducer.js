@@ -1,4 +1,4 @@
-import { NEW_MATH_QUESTION, SET_MAX_ANSWER } from "./actions";
+import { NEW_MATH_QUESTION, SET_MAX_MATH_ANSWER } from "./actions";
 import QuestionMaker from "logic/math/simple";
 
 const maxAnswer = 10;
@@ -17,7 +17,7 @@ const reducer = (
             questionMaker.newQuestion();
             let { question, answer } = questionMaker;
             return { ...state, question, answer };
-        case SET_MAX_ANSWER:
+        case SET_MAX_MATH_ANSWER:
             const { value } = payload || {};
             questionMaker.setMaxAnswer(value);
             return { ...state, maxAnswer: value };

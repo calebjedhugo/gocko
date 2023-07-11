@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MathQuestion from "components/MathQuestion";
+import CountingQuestion from "components/CountingQuestion";
 import Stats from "components/Stats";
 import ReadingQuestion from "components/ReadingQuestion";
 import Typing from "components/Typing";
@@ -22,6 +23,9 @@ function App() {
                         <Switch>
                             <Route path="/Quin">
                                 <MathQuestion />
+                            </Route>
+                            <Route path="/Counting">
+                                <CountingQuestion />
                             </Route>
                             <Route path="/Binjundan">
                                 <ReadingQuestion />

@@ -1,25 +1,49 @@
-import { randomNumberBetween } from "util/math";
+import { Icon } from '@material-ui/core';
+import { BugReport } from '@material-ui/icons';
+import styled from 'styled-components';
+import { random } from 'lodash';
+
+const IconContainer = styled('div')`
+  max-width: 200px;
+`;
 
 class QuestionMaker {
-    constructor({ maxAnswer }) {
-        this.numbers = [];
-        this.maxAnswer = maxAnswer;
-        this.newQuestion();
+  constructor({ maxAnswer, maxGroups }) {
+    this.numbers = [];
+    this.maxAnswer = maxAnswer;
+    this.maxGroups = maxGroups;
+    this.newQuestion();
+    this.newCount();
+  }
+
+  newQuestion = () => {
+    this.numbers[0] = random(0, this.maxAnswer);
+    this.numbers[1] = random(0, this.maxAnswer - this.numbers[0]);
+    this.question = `${this.numbers[0]} + ${this.numbers[1]}`;
+    this.answer = this.numbers[0] + this.numbers[1];
+  };
+
+  newCount = () => {
+    this.countAnswer = random(1, this.maxGroups);
+    let countQuestion = [];
+    for (let i = 0; i < this.countAnswer; i++) {
+      countQuestion.push(
+        <Icon key={i} fontSize="large">
+          <BugReport fontSize="large" />
+        </Icon>
+      );
     }
 
-    newQuestion = () => {
-        this.numbers[0] = randomNumberBetween(0, this.maxAnswer);
-        this.numbers[1] = randomNumberBetween(
-            0,
-            this.maxAnswer - this.numbers[0]
-        );
-        this.question = `${this.numbers[0]} + ${this.numbers[1]}`;
-        this.answer = this.numbers[0] + this.numbers[1];
-    };
+    this.countQuestion = <IconContainer>{countQuestion}</IconContainer>;
+  };
 
-    setMaxAnswer = (value) => {
-        this.maxAnswer = value;
-    };
+  setMaxAnswer = (value) => {
+    this.maxAnswer = value;
+  };
+
+  setMaxGroups = (value) => {
+    this.maxGroups = value;
+  };
 }
 
 export default QuestionMaker;

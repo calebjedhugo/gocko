@@ -4,6 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Home from "@material-ui/icons/Home";
 import Math from "@material-ui/icons/PlusOne";
+import GridViewIcon from "@mui/icons-material/GridView";
 import Reading from "@material-ui/icons/MenuBook";
 import Typing from "@material-ui/icons/Keyboard";
 import { useHistory } from "react-router-dom";
@@ -26,6 +27,13 @@ const Navbar = () => {
                     }}
                 >
                     <Reading />
+                </IconButton>
+                <IconButton
+                    onClick={() => {
+                        history.push("/Counting");
+                    }}
+                >
+                    <GridViewIcon />
                 </IconButton>
                 <IconButton
                     onClick={() => {

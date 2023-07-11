@@ -39,4 +39,9 @@ const typingHistory = new Storage({
     schema: [...defaultSchema],
 });
 
-export { mathHistory, readingHistory, typingHistory };
+const countingHistory = new Storage({
+    key: "countingHistory",
+    schema: [...defaultSchema],
+});
+
+export { mathHistory, readingHistory, typingHistory, countingHistory };
